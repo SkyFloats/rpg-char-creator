@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {Navbar} from './components/Navbar';
+import {HeroSection} from './components/HeroSection';
+import {CardsSection} from './components/CardsSection';
+import {InfoSection} from './components/InfoSection';
+import {Footer} from './components/Footer';
+import { createGlobalStyle } from 'styled-components';
+import backgroundImage from './assets/background.jpg';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const GlobalStyle = createGlobalStyle`
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-export default App
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background: url(${backgroundImage}) no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+function App() {
+  return (
+    <div>
+      <GlobalStyle />
+      <Navbar />
+      <HeroSection />
+      <CardsSection />
+      <InfoSection />
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
